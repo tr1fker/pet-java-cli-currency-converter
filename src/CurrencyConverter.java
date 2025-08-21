@@ -22,6 +22,20 @@ public class CurrencyConverter {
         currencyRatesManager.addCurrencyRate("PLN", "Польский злотый", 1.9761d, "CNY", "Китайский юань");
         //USD-EUR-BYN-RUB-PLN
 
-        
+        InputHandler inputHandler = new InputHandler();
+
+
+        System.out.print("Введите название исходной валюты:");
+        String fromCurrencyName = inputHandler.inputString();
+
+        System.out.print("Введите название целевой валюты:");
+        String toCurrencyName = inputHandler.inputString();
+
+        System.out.print("Введите сумму:");
+        double price = inputHandler.inputDouble();
+
+        System.out.print(" " + price + " " + fromCurrencyName + " -> "
+                + price * currencyRatesManager.getRate(fromCurrencyName, toCurrencyName) + " " + toCurrencyName);
+
     }
 }
