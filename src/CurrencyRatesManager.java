@@ -25,8 +25,8 @@ public class CurrencyRatesManager {
 
     public double getRate(String from, String to){
         return currencyRates.stream()
-                .filter(currencyRate -> currencyRate.getFromCurrency().equals(from) &&
-                        currencyRate.getToCurrency().equals(to))
+                .filter(currencyRate -> currencyRate.getFromCurrency().getName().equals(from) &&
+                        currencyRate.getToCurrency().getName().equals(to))
                 .map(CurrencyRate::getPrice)
                 .findFirst()
                 .orElse(0d);
