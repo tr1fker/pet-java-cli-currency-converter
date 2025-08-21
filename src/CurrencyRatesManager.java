@@ -12,6 +12,17 @@ public class CurrencyRatesManager {
         this.currencyRates.add(currencyRate);
     }
 
+    public void addCurrencyRate(String fromName, String fromCode, double price, String toName, String toCode){
+        Currency fromCurrency = new Currency(fromCode, fromName);
+        Currency toCurrency = new Currency(toCode, toName);
+
+        CurrencyRate currencyRate = new CurrencyRate(fromCurrency, price, toCurrency);
+        CurrencyRate currencyRateReverse = new CurrencyRate(toCurrency, 1 / price, fromCurrency);
+
+        this.currencyRates.add(currencyRate);
+        this.currencyRates.add(currencyRateReverse);
+    }
+
     public double getRate(String from, String to){
         return currencyRates.stream()
                 .filter(currencyRate -> currencyRate.getFromCurrency().equals(from) &&
